@@ -1,73 +1,120 @@
-# Welcome to your Lovable project
+# Comcast Business Hospitality Interactive Demo
 
-## Project info
+An interactive web-based demo showcasing Comcast Business technology solutions for convenience stores and hospitality environments.
 
-**URL**: https://lovable.dev/projects/b646f236-0bf4-497d-9134-bca4d2374180
+## Overview
 
-## How can I edit this code?
+This application provides an immersive, touch-friendly experience demonstrating various Comcast Business products and services across multiple location types including C-Store, Kitchen, Tech Room, EV Charging stations, and more.
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **React 18** with TypeScript
+- **Vite** - Fast build tool and dev server
+- **TailwindCSS** - Utility-first styling
+- **React Router** - Client-side routing
+- **shadcn/ui** - Component library
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b646f236-0bf4-497d-9134-bca4d2374180) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ and npm installed ([install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone <repository-url>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd hospitality-hub-reimagined
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```sh
+# Create optimized production build
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview production build locally
+npm run preview
+```
 
-## What technologies are used for this project?
+## Project Structure
 
-This project is built with:
+```
+src/
+├── components/
+│   └── demo/           # Demo-specific components
+│       ├── OverviewMap.tsx
+│       ├── RoomView.tsx
+│       ├── LocationNavBar.tsx
+│       ├── Hotspot.tsx
+│       ├── InfoSidebar.tsx
+│       └── NetworkMapModal.tsx
+├── data/
+│   └── rooms.ts        # Location and hotspot data
+├── pages/
+│   ├── Loading.tsx     # Initial loading screen
+│   ├── Index.tsx       # Landing page
+│   └── Demo.tsx        # Main demo experience
+└── index.css           # Global styles
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Features
 
-## How can I deploy this project?
+- **Interactive Overview Map** - Zoom-to-navigate functionality
+- **Touch-Optimized** - Designed for touchscreen kiosks and tablets
+- **Smooth Transitions** - Polished fade animations between views
+- **macOS Dock-Style Navigation** - Intuitive bottom navigation bar
+- **Hotspot Information** - Click hotspots to learn about products/services
+- **Responsive Design** - Works across various screen sizes
 
-Simply open [Lovable](https://lovable.dev/projects/b646f236-0bf4-497d-9134-bca4d2374180) and click on Share -> Publish.
+## Deployment
 
-## Can I connect a custom domain to my Lovable project?
+### Static Hosting
 
-Yes, you can!
+Build the project and deploy the `dist/` folder to any static hosting provider:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- AWS S3 + CloudFront
+- Azure Blob Storage
+- Google Cloud Storage
+- Netlify
+- Vercel
+- GitHub Pages
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Docker
+
+```dockerfile
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+## Configuration
+
+Key configuration values can be found in:
+
+- `src/data/rooms.ts` - Location data and hotspot positions
+- `src/components/demo/OverviewMap.tsx` - Zoom thresholds
+- `tailwind.config.ts` - Theme colors and styling
+
+## License
+
+Proprietary - Comcast Business
