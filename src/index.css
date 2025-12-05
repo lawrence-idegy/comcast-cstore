@@ -2,7 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Comcast New Vision Font */
+@font-face {
+  font-family: 'Comcast New Vision';
+  src: url('/fonts/ComcastNewVision-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Comcast New Vision';
+  src: url('/fonts/ComcastNewVision-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
@@ -149,6 +166,103 @@ All colors MUST be HSL.
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* Comcast Logo Styling */
+  .comcast-logo {
+    font-family: 'Comcast New Vision', sans-serif;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .comcast-logo-line {
+    display: block;
+    font-size: 1.75rem;
+  }
+
+  /* Touch to Start Button Style */
+  .touch-to-start-glow {
+    position: relative;
+  }
+
+  .touch-to-start-glow::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -8px;
+    bottom: -8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 9999px;
+    z-index: -1;
+    animation: pulse-scale 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-scale {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 0.25;
+    }
+  }
+
+  /* Info Sidebar Blue Gradient - bright blue top to dark blue-purple bottom */
+  .sidebar-gradient {
+    background: linear-gradient(180deg, hsl(217 91% 55%) 0%, hsl(240 80% 25%) 100%);
+  }
+
+  /* Control Button Styling (Back & Network Map) - semi-white */
+  .control-button {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+
+  .control-button:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+
+  /* Dock Menu Styling */
+  .dock-menu {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* Hotspot Glow Animation - white pulsing ring like touch-to-start */
+  .hotspot-glow {
+    position: relative;
+  }
+
+  .hotspot-glow::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 9999px;
+    z-index: -1;
+    animation: hotspot-pulse-scale 2s ease-in-out infinite;
+  }
+
+  @keyframes hotspot-pulse-scale {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.4;
     }
   }
 }

@@ -9,6 +9,8 @@ export interface Hotspot {
   x: number; // Percentage position (0-100)
   y: number; // Percentage position (0-100)
   icon?: string; // Optional icon path
+  zoomOrigin?: { x: number; y: number }; // Per-hotspot zoom origin (overrides room default)
+  zoomScale?: number; // Per-hotspot zoom scale (default 1.5)
   info: HotspotInfo;
 }
 
@@ -28,6 +30,8 @@ export interface Room {
   name: string;
   description: string;
   image: string;
+  zoomImage?: string; // Zoomed preview image for hotspot clicks
+  zoomOrigin?: { x: number; y: number }; // Where to zoom into (percentage 0-100)
   hotspots: Hotspot[];
   category: 'overview' | 'retail' | 'facility' | 'infrastructure';
 }

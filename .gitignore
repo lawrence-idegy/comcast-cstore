@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Design files and archives
+public/C-Store UI Design_Folder/
+public/*.zip
+*.zip
