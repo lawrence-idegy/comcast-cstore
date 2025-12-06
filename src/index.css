@@ -265,4 +265,14 @@ All colors MUST be HSL.
       opacity: 0.4;
     }
   }
+
+  /* Hide scrollbar for navigation on mobile */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -34,13 +34,14 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
 
       <div
         className={cn(
-          'absolute bottom-4 left-1/2 -translate-x-1/2 z-40',
+          'absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-40',
+          'w-full px-2 sm:w-auto sm:px-0',
           'transition-all duration-300 ease-out',
           isHidden ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100 translate-y-0'
         )}
       >
-        {/* Dock container - NO background */}
-        <div className="flex items-end gap-4 md:gap-6 px-2">
+        {/* Dock container - scrollable on mobile */}
+        <div className="flex items-end gap-2 sm:gap-4 md:gap-6 px-2 overflow-x-auto pb-1 justify-start sm:justify-center scrollbar-hide">
         {locations.map((room) => {
           const isActive = room.id === currentRoomId;
 
@@ -48,12 +49,12 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
             <button
               key={room.id}
               onClick={() => onNavigate(room.id)}
-              className="relative group flex flex-col items-center transition-transform duration-200 ease-out hover:-translate-y-1"
+              className="relative group flex flex-col items-center transition-transform duration-200 ease-out hover:-translate-y-1 flex-shrink-0"
             >
               {/* Circular thumbnail */}
               <div
                 className={cn(
-                  'w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden',
+                  'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full overflow-hidden',
                   'border-2 transition-all duration-200',
                   'shadow-lg group-hover:shadow-xl group-hover:scale-105',
                   isActive
@@ -71,8 +72,8 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
               {/* Label - always visible, white text for contrast */}
               <span
                 className={cn(
-                  'mt-1.5 text-xs md:text-sm font-medium text-white drop-shadow-md',
-                  'transition-all duration-200'
+                  'mt-1 sm:mt-1.5 text-[10px] sm:text-xs md:text-sm font-medium text-white drop-shadow-md',
+                  'transition-all duration-200 max-w-[60px] sm:max-w-none truncate sm:whitespace-nowrap'
                 )}
                 style={{
                   fontFamily: "'Comcast New Vision', sans-serif",

@@ -123,10 +123,10 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
           ))}
 
           {/* Comcast Business Logo - Top Left */}
-          <div className="absolute top-6 left-6 z-20 pointer-events-none">
-            <div className="comcast-logo">
-              <span className="comcast-logo-line">COMCAST</span>
-              <span className="comcast-logo-line">BUSINESS</span>
+          <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 pointer-events-none">
+            <div className="comcast-logo comcast-logo-mobile sm:comcast-logo-desktop">
+              <span className="comcast-logo-line text-base sm:text-[1.75rem]">COMCAST</span>
+              <span className="comcast-logo-line text-base sm:text-[1.75rem]">BUSINESS</span>
             </div>
           </div>
 
@@ -134,9 +134,9 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
           {onBackToOverview && (
             <button
               onClick={onBackToOverview}
-              className="absolute bottom-[calc(1rem+2.5rem+0.75rem)] left-[12%] z-30 control-button w-12 h-12 rounded-full flex items-center justify-center hover:scale-105 transition-transform"
+              className="absolute bottom-[calc(0.5rem+3.5rem+0.5rem)] sm:bottom-[calc(1rem+2.5rem+0.75rem)] left-2 sm:left-[12%] z-30 control-button w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
             >
-              <ArrowLeft className="h-5 w-5 text-white" />
+              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
             </button>
           )}
 
@@ -144,14 +144,14 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
           <button
             onClick={() => setIsNetworkMapOpen(true)}
             className={cn(
-              "absolute bottom-[calc(1rem+2.5rem+0.75rem)] right-[12%] z-30 transition-all duration-300",
-              "control-button px-4 py-3 rounded-full flex items-center gap-2",
-              "hover:scale-105",
+              "absolute bottom-[calc(0.5rem+3.5rem+0.5rem)] sm:bottom-[calc(1rem+2.5rem+0.75rem)] right-2 sm:right-[12%] z-30 transition-all duration-300",
+              "control-button px-2 py-2 sm:px-4 sm:py-3 rounded-full flex items-center gap-1 sm:gap-2",
+              "hover:scale-105 active:scale-95",
               isSidebarOpen ? "opacity-0 pointer-events-none" : "opacity-100"
             )}
           >
-            <Globe className="h-5 w-5 text-white" />
-            <span className="text-white text-sm font-medium" style={{ fontFamily: "'Comcast New Vision', sans-serif" }}>
+            <Globe className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+            <span className="text-white text-xs sm:text-sm font-medium hidden sm:inline" style={{ fontFamily: "'Comcast New Vision', sans-serif" }}>
               Network Map
             </span>
           </button>
