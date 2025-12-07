@@ -71,14 +71,14 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
 
   return (
     <>
-      <div className="w-full h-screen overflow-hidden relative">
+      <div className="w-full min-h-screen overflow-hidden relative bg-black">
         {/* Room Image Container */}
-        <div className="relative w-full h-full">
-          {/* Room Image - fills viewport, crops to fit */}
+        <div className="relative w-full h-screen sm:h-screen flex items-center justify-center">
+          {/* Room Image - full width on mobile, cover on desktop */}
           <img
             src={room.image}
             alt={`${room.name} - ${room.description}`}
-            className="w-full h-full object-cover select-none"
+            className="w-full sm:w-full sm:h-full sm:object-cover select-none"
             style={{
               transform: isSidebarOpen
                 ? `scale(${currentZoomScale})`
