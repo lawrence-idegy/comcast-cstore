@@ -95,25 +95,25 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
   };
 
   return (
-    <div className="w-full h-screen overflow-hidden relative">
+    <div className="w-full min-h-screen overflow-hidden relative bg-black">
       {/* Overview Image Container - full screen */}
       <div
         ref={containerRef}
-        className="relative w-full h-full"
+        className="relative w-full h-screen flex items-center justify-center"
       >
-        {/* Background Image - covers entire screen */}
+        {/* Background Image - full width on mobile, cover on desktop */}
         <img
           src={room.image}
           alt={room.name}
-          className="w-full h-full object-cover select-none"
+          className="w-full sm:w-full sm:h-full sm:object-cover select-none"
           draggable={false}
         />
 
         {/* Comcast Business Logo - Top Left (inside image) */}
-        <div className="absolute top-6 left-6 z-20 pointer-events-none">
+        <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 pointer-events-none">
           <div className="comcast-logo">
-            <span className="comcast-logo-line">COMCAST</span>
-            <span className="comcast-logo-line">BUSINESS</span>
+            <span className="comcast-logo-line text-base sm:text-[1.75rem]">COMCAST</span>
+            <span className="comcast-logo-line text-base sm:text-[1.75rem]">BUSINESS</span>
           </div>
         </div>
 
