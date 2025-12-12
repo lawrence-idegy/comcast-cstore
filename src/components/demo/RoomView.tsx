@@ -46,9 +46,9 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
       closeTimeoutRef.current = null;
     }
 
-    // Set zoom origin before opening - use hotspot's zoom origin or room default
-    const origin = hotspot.zoomOrigin || room.zoomOrigin || { x: 50, y: 50 };
-    const scale = hotspot.zoomScale || 1.5;
+    // Set zoom origin to the hotspot's position
+    const origin = { x: hotspot.x, y: hotspot.y };
+    const scale = hotspot.zoomScale || 2.0;
     setCurrentZoomOrigin(origin);
     setCurrentZoomScale(scale);
     setActiveHotspotId(hotspot.id);
@@ -108,19 +108,26 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
           )}
 
 
-          {/* Hotspots - hide all when sidebar is open */}
-          {!isSidebarOpen && room.hotspots.map((hotspot) => (
-            <Hotspot
-              key={hotspot.id}
-              id={hotspot.id}
-              label={hotspot.label}
-              x={hotspot.x}
-              y={hotspot.y}
-              icon={hotspot.icon}
-              isActive={hotspot.id === activeHotspotId}
-              onClick={() => handleHotspotClick(hotspot)}
-            />
-          ))}
+          {/* Hotspots - show all when sidebar closed, only active one when open */}
+          {room.hotspots.map((hotspot) => {
+            const isActive = hotspot.id === activeHotspotId;
+            // Hide non-active hotspots when sidebar is open
+            if (isSidebarOpen && !isActive) return null;
+
+            return (
+              <Hotspot
+                key={hotspot.id}
+                id={hotspot.id}
+                label={hotspot.label}
+                x={hotspot.x}
+                y={hotspot.y}
+                icon={hotspot.icon}
+                isActive={isActive}
+                isSidebarOpen={isSidebarOpen}
+                onClick={() => handleHotspotClick(hotspot)}
+              />
+            );
+          })}
 
           {/* Comcast Business Logo - Top Left */}
           <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 pointer-events-none">

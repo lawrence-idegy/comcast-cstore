@@ -26,11 +26,11 @@ export const InfoSidebar = ({ info, isOpen, onClose }: InfoSidebarProps) => {
         />
       )}
 
-      {/* Sidebar - full width on mobile, 40% on desktop */}
+      {/* Sidebar - full width on mobile, narrower on desktop to show more zoomed image */}
       <div
         className={cn(
           'fixed top-0 right-0 h-full z-50',
-          'w-full sm:w-[80%] md:w-[60%] lg:w-[40%]',
+          'w-full sm:w-[70%] md:w-[50%] lg:w-[35%]',
           'sidebar-gradient',
           'transform transition-transform duration-500 ease-out',
           isOpen ? 'translate-x-0' : 'translate-x-full'

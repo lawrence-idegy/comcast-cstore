@@ -12,16 +12,23 @@ interface HotspotProps {
   y: number;
   icon?: string;
   isActive?: boolean;
+  isSidebarOpen?: boolean;
   onClick: () => void;
 }
 
-export const Hotspot = ({ id, label, x, y, icon, isActive, onClick }: HotspotProps) => {
+export const Hotspot = ({ id, label, x, y, icon, isActive, isSidebarOpen, onClick }: HotspotProps) => {
+  // When sidebar is open and this hotspot is active, position it on the left side
+  const activePosition = isActive && isSidebarOpen;
+
   return (
     <div
-      className="absolute group"
+      className={cn(
+        "absolute group transition-all duration-700 ease-out z-20",
+        activePosition && "!left-[15%] !top-1/2"
+      )}
       style={{
-        left: `${x}%`,
-        top: `${y}%`,
+        left: activePosition ? undefined : `${x}%`,
+        top: activePosition ? undefined : `${y}%`,
         transform: 'translate(-50%, -50%)'
       }}
     >
