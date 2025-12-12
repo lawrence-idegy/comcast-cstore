@@ -18,7 +18,7 @@ export const rooms: Room[] = [
     id: 'main-store',
     name: 'Main Store',
     description: 'Main Convenience Store Area with shelving units, refrigerators, cash registers and food area',
-    image: '/2.Main Store.png',
+    image: '/R7/R7/1-C-store.jpg',
     zoomImage: '/hotspot-previews/main-store-zoom.png',
     zoomOrigin: { x: 50, y: 45 }, // Center - woman cashier at checkout counter
     category: 'retail',
@@ -53,7 +53,7 @@ export const rooms: Room[] = [
     id: 'food-area',
     name: 'Food Area',
     description: 'Food service counter with self-service kiosks and kitchen display systems',
-    image: '/3.Food.png',
+    image: '/R7/R7/2-Food-Area.jpg',
     zoomImage: '/hotspot-previews/food-area-zoom.png',
     zoomOrigin: { x: 45, y: 45 }, // Center-left - man in bow tie at food counter
     category: 'facility',
@@ -88,7 +88,7 @@ export const rooms: Room[] = [
     id: 'public-restroom',
     name: 'Public Restroom',
     description: 'Modern restroom with smart fixtures and IoT monitoring',
-    image: '/4.Restroom.png',
+    image: '/R7/R7/5-Restroom.jpg',
     zoomImage: '/hotspot-previews/restroom-zoom.png',
     zoomOrigin: { x: 35, y: 50 }, // Left-center - woman walking by stalls
     category: 'facility',
@@ -123,7 +123,7 @@ export const rooms: Room[] = [
     id: 'tech-room',
     name: 'Tech Room',
     description: 'Back of house area with network infrastructure and management systems',
-    image: '/5.Tech Room.png',
+    image: '/R7/R7/6-Tech-Area.jpg',
     zoomImage: '/hotspot-previews/tech-room-zoom.png',
     zoomOrigin: { x: 75, y: 70 },
     category: 'infrastructure',
@@ -158,7 +158,7 @@ export const rooms: Room[] = [
     id: 'ev-charging',
     name: 'EV Charging',
     description: 'Electric vehicle charging station area with smart charging solutions',
-    image: '/7.EV Charging.png',
+    image: '/R7/R7/4-EV-Charging.jpg',
     zoomImage: '/hotspot-previews/ev-charging-zoom.png',
     zoomOrigin: { x: 35, y: 55 }, // Left side - man with car at charging station
     category: 'facility',
@@ -193,7 +193,7 @@ export const rooms: Room[] = [
     id: 'gas-station',
     name: 'Gas Station',
     description: 'Modern fuel dispensing area with digital payment and IoT monitoring',
-    image: '/6.Gas Station.png',
+    image: '/R7/R7/3-Gas-Station.jpg',
     zoomImage: '/hotspot-previews/gas-station-zoom.png',
     zoomOrigin: { x: 100, y: 120 }, // Canopy, fuel pumps and white car
     category: 'retail',

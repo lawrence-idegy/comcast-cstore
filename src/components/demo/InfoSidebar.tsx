@@ -39,24 +39,27 @@ export const InfoSidebar = ({ info, isOpen, onClose }: InfoSidebarProps) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-white/80 transition-colors p-2"
+          className="absolute top-5 right-5 sm:top-7 sm:right-7 text-white hover:text-white/80 transition-colors p-2.5"
         >
-          <X className="h-6 w-6 sm:h-6 sm:w-6" />
+          <X className="h-7 w-7 sm:h-8 sm:w-8" />
         </button>
 
         {/* Content */}
-        <div className="p-6 sm:p-8 overflow-y-auto h-full flex items-center">
+        <div className="p-20 sm:p-28 md:p-32 overflow-y-auto h-full flex items-center">
           {info && (
-            <div className="space-y-4 sm:space-y-6 w-full">
-              {/* Title */}
+            <div className="space-y-8 sm:space-y-10 w-full">
+              {/* Title - 32px */}
               <h2
-                className="text-xl sm:text-2xl md:text-3xl font-semibold text-white pr-8"
+                className="text-[32px] font-semibold text-white pr-12 leading-tight"
                 style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
               >
                 {info.title}
               </h2>
               {/* Description paragraphs */}
-              <div className="text-white/90 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+              <div
+                className="text-white/90 text-[16px] font-normal leading-relaxed whitespace-pre-line"
+                style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
+              >
                 {info.description}
               </div>
             </div>

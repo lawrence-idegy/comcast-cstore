@@ -116,7 +116,8 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-foreground font-sans antialiased;
+    @apply text-foreground antialiased;
+    font-family: 'Comcast New Vision', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -193,14 +194,12 @@ All colors MUST be HSL.
   .touch-to-start-glow::before {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    top: -8px;
-    bottom: -8px;
+    inset: -8px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 9999px;
     z-index: -1;
     animation: pulse-scale 2s ease-in-out infinite;
+    will-change: transform, opacity;
   }
 
   @keyframes pulse-scale {
@@ -209,7 +208,7 @@ All colors MUST be HSL.
       opacity: 0.5;
     }
     50% {
-      transform: scale(1.15);
+      transform: scale(1.1, 1.15);
       opacity: 0.25;
     }
   }
@@ -219,17 +218,18 @@ All colors MUST be HSL.
     background: linear-gradient(180deg, hsl(217 91% 55%) 0%, hsl(240 80% 25%) 100%);
   }
 
-  /* Control Button Styling (Back & Network Map) - semi-white */
+  /* Control Button Styling (Back & Network Map) - round, no glow */
   .control-button {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 9999px;
     color: white;
   }
 
   .control-button:hover {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.3);
   }
 
   /* Dock Menu Styling */
@@ -240,29 +240,17 @@ All colors MUST be HSL.
     border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
-  /* Hotspot Glow Animation - white pulsing ring like touch-to-start */
-  .hotspot-glow {
-    position: relative;
+  /* Hotspot Ring - subtle pulsing animation */
+  .hotspot-ring {
+    animation: hotspot-pulse-ring 2s ease-in-out infinite;
   }
 
-  .hotspot-glow::before {
-    content: '';
-    position: absolute;
-    inset: 8px;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 9999px;
-    z-index: -1;
-    animation: hotspot-pulse-scale 2s ease-in-out infinite;
-  }
-
-  @keyframes hotspot-pulse-scale {
+  @keyframes hotspot-pulse-ring {
     0%, 100% {
       transform: scale(1);
-      opacity: 0.85;
     }
     50% {
-      transform: scale(1.05);
-      opacity: 0.4;
+      transform: scale(1.08);
     }
   }
 

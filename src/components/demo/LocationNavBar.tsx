@@ -19,16 +19,15 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
 
   return (
     <>
-      {/* Dark grainy overlay behind dock menu */}
+      {/* Dark overlay behind dock menu - solid black fade for clear contrast */}
       <div
         className={cn(
-          'absolute bottom-0 left-0 right-0 h-32 z-30 pointer-events-none',
+          'absolute bottom-0 left-0 right-0 h-52 z-30 pointer-events-none',
           'transition-opacity duration-300',
           isHidden ? 'opacity-0' : 'opacity-100'
         )}
         style={{
-          background: 'linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%)',
-          mixBlendMode: 'multiply'
+          background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%)'
         }}
       />
 
@@ -40,8 +39,8 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
           isHidden ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100 translate-y-0'
         )}
       >
-        {/* Dock container - scrollable on mobile */}
-        <div className="flex items-end gap-2 sm:gap-4 md:gap-6 px-2 overflow-x-auto pb-1 justify-start sm:justify-center scrollbar-hide">
+        {/* Dock container - scrollable on mobile, extra padding to prevent hover clipping */}
+        <div className="flex items-end gap-4 sm:gap-6 md:gap-8 px-4 pt-8 overflow-x-auto pb-2 justify-start sm:justify-center scrollbar-hide">
         {locations.map((room) => {
           const isActive = room.id === currentRoomId;
 
@@ -49,17 +48,23 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
             <button
               key={room.id}
               onClick={() => onNavigate(room.id)}
-              className="relative group flex flex-col items-center transition-transform duration-200 ease-out hover:-translate-y-1 flex-shrink-0"
+              className="relative group flex flex-col items-center transition-all duration-200 ease-out hover:-translate-y-2 hover:scale-120 flex-shrink-0"
+              style={{
+                transform: 'scale(1)',
+                transition: 'transform 0.2s ease-out'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2) translateY(-8px)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
-              {/* Circular thumbnail */}
+              {/* Circular thumbnail with blue ring for active state */}
               <div
                 className={cn(
-                  'w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full overflow-hidden',
-                  'border-2 transition-all duration-200',
-                  'shadow-lg group-hover:shadow-xl group-hover:scale-105',
+                  'w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden',
+                  'transition-all duration-200',
+                  'shadow-lg',
                   isActive
-                    ? 'border-white border-[3px]'
-                    : 'border-white/70'
+                    ? 'ring-4 ring-primary border-2 border-white shadow-[0_0_20px_rgba(37,99,235,0.6)]'
+                    : 'border-2 border-white/70'
                 )}
               >
                 <img
@@ -72,8 +77,9 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
               {/* Label - always visible, white text for contrast */}
               <span
                 className={cn(
-                  'mt-1 sm:mt-1.5 text-[10px] sm:text-xs md:text-sm font-medium text-white drop-shadow-md',
-                  'transition-all duration-200 max-w-[60px] sm:max-w-none truncate sm:whitespace-nowrap'
+                  'mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base font-medium text-white drop-shadow-md',
+                  'transition-all duration-200 max-w-[70px] sm:max-w-none truncate sm:whitespace-nowrap',
+                  isActive && 'text-primary-foreground'
                 )}
                 style={{
                   fontFamily: "'Comcast New Vision', sans-serif",

@@ -44,12 +44,11 @@ const Loading = () => {
     )}>
       {/* Logo */}
       <div className="text-center mb-12">
-        <h1 className="text-5xl md:text-7xl font-semibold tracking-wider text-white mb-2">
-          COMCAST
-        </h1>
-        <h2 className="text-5xl md:text-7xl font-semibold tracking-wider text-white">
-          BUSINESS
-        </h2>
+        <img
+          src="/R2/R2/Primary Logo/01 RGB/PNG/CB_Logo_White_RGB.png"
+          alt="Comcast Business"
+          className="h-20 md:h-28 w-auto"
+        />
       </div>
 
       {/* Loading indicator */}

@@ -52,10 +52,11 @@ const Index = () => {
       >
         {/* Comcast Business Logo - Top Left */}
         <header className="absolute top-6 left-6 md:top-8 md:left-8">
-          <div className="comcast-logo">
-            <span className="comcast-logo-line">COMCAST</span>
-            <span className="comcast-logo-line">BUSINESS</span>
-          </div>
+          <img
+            src="/R2/R2/Primary Logo/01 RGB/PNG/CB_Logo_White_RGB.png"
+            alt="Comcast Business"
+            className="h-12 md:h-16 w-auto"
+          />
         </header>
 
         {/* Touch to Start Button - Centered */}
@@ -63,7 +64,7 @@ const Index = () => {
           <button
             onClick={handleStart}
             disabled={isZoomingOut}
-            className="touch-to-start-glow bg-primary hover:bg-primary/90 text-white font-semibold text-lg md:text-xl px-10 md:px-14 py-4 md:py-5 rounded-full uppercase tracking-widest transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="touch-to-start-glow bg-primary hover:bg-primary/90 text-white font-semibold text-xl md:text-2xl px-12 md:px-16 py-5 md:py-6 rounded-full uppercase tracking-widest transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
           >
             Touch to Start

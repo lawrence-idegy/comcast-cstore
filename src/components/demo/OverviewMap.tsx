@@ -111,10 +111,11 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
 
         {/* Comcast Business Logo - Top Left (inside image) */}
         <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 pointer-events-none">
-          <div className="comcast-logo">
-            <span className="comcast-logo-line text-base sm:text-[1.75rem]">COMCAST</span>
-            <span className="comcast-logo-line text-base sm:text-[1.75rem]">BUSINESS</span>
-          </div>
+          <img
+            src="/R2/R2/Primary Logo/01 RGB/PNG/CB_Logo_White_RGB.png"
+            alt="Comcast Business"
+            className="h-10 sm:h-14 w-auto"
+          />
         </div>
 
         {/* Clickable Regions Overlay */}
@@ -147,7 +148,10 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
                   hoveredRegion === region.id ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                 )}
               >
-                <div className="bg-primary text-white shadow-xl text-base md:text-lg font-semibold px-5 py-2.5 rounded-xl whitespace-nowrap pointer-events-none">
+                <div
+                  className="touch-to-start-glow bg-primary text-white shadow-xl text-[16px] font-semibold px-8 md:px-10 py-3 md:py-4 rounded-full whitespace-nowrap pointer-events-none"
+                  style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
+                >
                   {region.name}
                 </div>
               </div>
