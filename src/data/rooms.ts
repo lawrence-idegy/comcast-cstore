@@ -10,7 +10,7 @@ export const rooms: Room[] = [
     id: 'overview',
     name: 'Overview',
     description: 'Interactive overview of all convenience store locations and facilities',
-    image: '/R7/R7/0-Full-View.jpg',
+    image: '/1.Overview.png',
     category: 'overview',
     hotspots: []
   },

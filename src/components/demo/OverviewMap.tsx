@@ -118,8 +118,7 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
           />
         </div>
 
-        {/* Clickable Regions Overlay - DISABLED, using dock navigation instead */}
-        {/*
+        {/* Clickable Regions Overlay */}
         <div className="absolute inset-0">
           {clickableRegions.map((region) => (
             <button
@@ -141,6 +140,7 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
               }}
               aria-label={`Navigate to ${region.name}`}
             >
+              {/* Region Label - Only shows on hover */}
               <div
                 className={cn(
                   'absolute inset-0 flex items-center justify-center',
@@ -158,7 +158,6 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
             </button>
           ))}
         </div>
-        */}
 
         {/* Location Navigation Bar - Inside the image, at bottom */}
         <LocationNavBar
