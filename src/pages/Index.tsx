@@ -35,7 +35,7 @@ const Index = () => {
         )}
       >
         <img
-          src="/1.Overview.png"
+          src="/1. Overview.jpg"
           alt="C-Store Facility Overview"
           className="w-full h-full object-cover"
         />
