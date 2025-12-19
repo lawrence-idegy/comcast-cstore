@@ -4,6 +4,7 @@
  * No background - sits directly on the image
  */
 
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { rooms } from '@/data/rooms';
 
@@ -11,11 +12,25 @@ interface LocationNavBarProps {
   currentRoomId: string;
   onNavigate: (roomId: string) => void;
   isHidden?: boolean;
+  animateIn?: boolean;
 }
 
-export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: LocationNavBarProps) => {
+export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false, animateIn = false }: LocationNavBarProps) => {
   // Filter out the overview from navigation (it's accessible via back button)
   const locations = rooms.filter(room => room.id !== 'overview');
+
+  // Animation state for initial rise from bottom
+  const [hasAnimatedIn, setHasAnimatedIn] = useState(!animateIn);
+
+  useEffect(() => {
+    if (animateIn && !hasAnimatedIn) {
+      // Small delay before starting animation
+      const timer = setTimeout(() => {
+        setHasAnimatedIn(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [animateIn, hasAnimatedIn]);
 
   return (
     <>
@@ -35,8 +50,11 @@ export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false }: 
         className={cn(
           'absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 z-40',
           'w-full px-2 sm:w-auto sm:px-0',
-          'transition-all duration-300 ease-out',
-          isHidden ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100 translate-y-0'
+          'transition-all ease-out',
+          // Initial animation - rise from bottom
+          !hasAnimatedIn ? 'opacity-0 translate-y-24 duration-0' : 'duration-700',
+          // Hidden state (when sidebar is open)
+          isHidden ? 'opacity-0 pointer-events-none translate-y-4' : hasAnimatedIn ? 'opacity-100 translate-y-0' : ''
         )}
       >
         {/* Dock container - scrollable on mobile, extra padding to prevent hover clipping */}

@@ -44,9 +44,9 @@ const clickableRegions: ClickableRegion[] = [
   },
   {
     id: 'region-restroom',
-    name: 'Public Restroom',
-    x: 33,
-    y: 15,
+    name: 'Restroom',
+    x: 40,
+    y: 21,
     width: 14,
     height: 18,
     roomId: 'public-restroom',
@@ -54,8 +54,8 @@ const clickableRegions: ClickableRegion[] = [
   {
     id: 'region-main-store',
     name: 'Main Store',
-    x: 28,
-    y: 35,
+    x: 20,
+    y: 39,
     width: 35,
     height: 30,
     roomId: 'main-store',
@@ -63,26 +63,39 @@ const clickableRegions: ClickableRegion[] = [
   {
     id: 'region-food-area',
     name: 'Food Area',
-    x: 65,
-    y: 12,
-    width: 25,
-    height: 28,
+    x: 59,
+    y: 31,
+    width: 18,
+    height: 20,
     roomId: 'food-area',
+  },
+  {
+    id: 'region-kitchen',
+    name: 'Kitchen',
+    x: 70,
+    y: 12,
+    width: 20,
+    height: 28,
+    roomId: 'kitchen',
   },
   {
     id: 'region-ev',
     name: 'EV Charging',
-    x: 68,
-    y: 45,
+    x: 63,
+    y: 58,
     width: 28,
     height: 35,
     roomId: 'ev-charging',
   }
 ];
 
+// Set to true to enable coordinate picker mode - click anywhere to see coordinates
+const DEBUG_COORDINATES = false;
+
 export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [clickedCoords, setClickedCoords] = useState<{ x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Handle click navigation
@@ -107,7 +120,22 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
           alt={room.name}
           className="w-full sm:w-full sm:h-full sm:object-cover select-none"
           draggable={false}
+          onClick={DEBUG_COORDINATES ? (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = Math.round(((e.clientX - rect.left) / rect.width) * 100);
+            const y = Math.round(((e.clientY - rect.top) / rect.height) * 100);
+            setClickedCoords({ x, y });
+            console.log(`Clicked coordinates: { x: ${x}, y: ${y} }`);
+          } : undefined}
         />
+
+        {/* Debug coordinate display */}
+        {DEBUG_COORDINATES && clickedCoords && (
+          <div className="absolute top-20 left-6 z-50 bg-black/80 text-white px-4 py-3 rounded-lg font-mono text-sm">
+            <div>Overview Map</div>
+            <div>Click: x: {clickedCoords.x}, y: {clickedCoords.y}</div>
+          </div>
+        )}
 
         {/* Comcast Business Logo - Top Left (inside image) */}
         <div className="absolute top-3 left-3 sm:top-6 sm:left-6 z-20 pointer-events-none">
@@ -119,7 +147,16 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
         </div>
 
         {/* Clickable Regions Overlay */}
-        <div className="absolute inset-0">
+        <div
+          className="absolute inset-0"
+          onClick={DEBUG_COORDINATES ? (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = Math.round(((e.clientX - rect.left) / rect.width) * 100);
+            const y = Math.round(((e.clientY - rect.top) / rect.height) * 100);
+            setClickedCoords({ x, y });
+            console.log(`Clicked coordinates: { x: ${x}, y: ${y} }`);
+          } : undefined}
+        >
           {clickableRegions.map((region) => (
             <button
               key={region.id}
@@ -164,6 +201,7 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
           currentRoomId="overview"
           onNavigate={onNavigateToRoom}
           isHidden={isNavigating}
+          animateIn={true}
         />
       </div>
     </div>

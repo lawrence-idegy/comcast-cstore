@@ -13,22 +13,20 @@ interface HotspotProps {
   icon?: string;
   isActive?: boolean;
   isSidebarOpen?: boolean;
+  isHidden?: boolean;
   onClick: () => void;
 }
 
-export const Hotspot = ({ id, label, x, y, icon, isActive, isSidebarOpen, onClick }: HotspotProps) => {
-  // When sidebar is open and this hotspot is active, position it on the left side
-  const activePosition = isActive && isSidebarOpen;
-
+export const Hotspot = ({ id, label, x, y, icon, isActive, isSidebarOpen, isHidden, onClick }: HotspotProps) => {
   return (
     <div
       className={cn(
-        "absolute group transition-all duration-700 ease-out z-20",
-        activePosition && "!left-[15%] !top-1/2"
+        "absolute group z-20 transition-opacity duration-300",
+        isHidden ? "opacity-0 pointer-events-none" : "opacity-100"
       )}
       style={{
-        left: activePosition ? undefined : `${x}%`,
-        top: activePosition ? undefined : `${y}%`,
+        left: `${x}%`,
+        top: `${y}%`,
         transform: 'translate(-50%, -50%)'
       }}
     >
@@ -45,11 +43,9 @@ export const Hotspot = ({ id, label, x, y, icon, isActive, isSidebarOpen, onClic
       >
         {/* Icon image with glow ring behind it */}
         {icon && (
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 aspect-square">
-            {/* Pulsing glow ring - perfectly circular */}
-            <div className="absolute inset-[-5%] flex items-center justify-center">
-              <div className="w-full h-full aspect-square bg-white/80 rounded-full hotspot-ring" />
-            </div>
+          <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 aspect-square flex items-center justify-center">
+            {/* Pulsing glow ring - centered behind icon */}
+            <div className="absolute w-[80%] h-[80%] bg-white/70 rounded-full hotspot-ring" />
             {/* Icon on top */}
             <img
               src={icon}
@@ -60,19 +56,6 @@ export const Hotspot = ({ id, label, x, y, icon, isActive, isSidebarOpen, onClic
         )}
       </button>
 
-      {/* Label tooltip on hover - hidden on mobile */}
-      <div
-        className={cn(
-          "absolute left-1/2 -translate-x-1/2 top-full mt-2.5 sm:mt-3.5",
-          "px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-lg",
-          "bg-white text-gray-900 text-xs sm:text-sm font-medium whitespace-nowrap",
-          "hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
-        )}
-        style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
-      >
-        {label}
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-white" />
-      </div>
     </div>
   );
 };

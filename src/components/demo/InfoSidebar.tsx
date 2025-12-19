@@ -13,6 +13,18 @@ interface InfoSidebarProps {
   onClose: () => void;
 }
 
+// Parse markdown-style bold text (**text**) into React elements
+const parseDescription = (text: string) => {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      const boldText = part.slice(2, -2);
+      return <strong key={index} className="font-semibold">{boldText}</strong>;
+    }
+    return part;
+  });
+};
+
 export const InfoSidebar = ({ info, isOpen, onClose }: InfoSidebarProps) => {
   if (!info && !isOpen) return null;
 
@@ -60,7 +72,7 @@ export const InfoSidebar = ({ info, isOpen, onClose }: InfoSidebarProps) => {
                 className="text-white/90 text-[16px] font-normal leading-relaxed whitespace-pre-line"
                 style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
               >
-                {info.description}
+                {parseDescription(info.description)}
               </div>
             </div>
           )}

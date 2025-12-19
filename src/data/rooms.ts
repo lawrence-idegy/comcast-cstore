@@ -24,23 +24,23 @@ export const rooms: Room[] = [
       {
         id: 'cstore-video-analytics',
         label: 'Video Analytics',
-        x: 40,
-        y: 45,
+        x: 36,
+        y: 39,
         icon: '/icons/Video Analytics & Presence Analytics.png',
         info: {
-          title: 'Video Analytics & Presence Analytics',
-          description: 'Video Analytics\nGain valuable insights with anonymized data on how customers move throughout your store, when and where employees engage with them and how they are interacting within the store.\n\nPresence Analytics\nUnderstand occupancy and traffic flow trends to optimize space utilization and understand customer buying trends.'
+          title: 'Smart technology solutions available through Comcast Smart Solutions:',
+          description: '**Video Analytics**\nGain valuable insights with anonymized data on how customers move throughout your store, when and where employees engage with them and how they are interacting within the store.\n\n**Presence Analytics**\nUnderstand occupancy and traffic flow trends to optimize space utilization and understand customer buying trends.'
         }
       },
       {
         id: 'cstore-managed-voice',
         label: 'Managed Voice',
-        x: 55,
-        y: 45,
-        icon: '/icons/Managed Voice.png',
+        x: 43,
+        y: 60,
+        icon: '/icons/Managed Voice_Fill.png',
         info: {
-          title: 'Managed Voice',
-          description: 'A cost-effective, feature-rich phone solution that keeps your team connected and productive.\n\nUnify voice communications across all your store locations with HD voice quality, advanced call routing, and mobile integration for managers on the go.'
+          title: 'Advanced technology solutions available through Comcast Business:',
+          description: '**Managed Voice**\nCost effective voice solutions across all store locations to help streamline employee communication.'
         }
       }
     ]
@@ -53,56 +53,76 @@ export const rooms: Room[] = [
     category: 'facility',
     hotspots: [
       {
-        id: 'kitchen-leak-detection',
-        label: 'Leak Detection',
-        x: 42,
-        y: 50,
-        icon: '/icons/MachineQ (IoT) Icon.png',
+        id: 'food-digital-signage',
+        label: 'Digital Signage & Kiosks',
+        x: 28,
+        y: 34,
+        icon: '/icons/Smart Solutions Icon_Fill.png',
         info: {
-          title: 'Leak Detection',
-          description: 'Safeguard your convenience store from water intrusion and receive real-time alerts if moisture is detected, enabling swift corrective action to help mitigate damage.\n\nProtect your equipment, inventory, and facilities with 24/7 automated monitoring and instant notifications via SMS, email, or mobile app.'
+          title: 'Smart technology solutions available through Comcast Smart Solutions:',
+          description: '**Digital Signage**\nSmart signage solutions, featuring digitally-integrated custom fixtures and custom dynamic displays.\n\n**Kiosks**\nEnable fast transactions, while alleviating operational pressure and delivering a streamlined experience to customers. Ordering kiosks have ADA-compliant options, and add an AI tool to help translate 100+ languages and dialects.'
         }
       },
       {
-        id: 'kitchen-temperature',
-        label: 'Digital Temperature Monitoring',
-        x: 57,
-        y: 50,
-        icon: '/icons/Managed WiFi.png',
+        id: 'food-iot-monitoring',
+        label: 'IoT Monitoring',
+        x: 41,
+        y: 48,
+        icon: '/icons/MachineQ (IoT) Icon_Fill.png',
         info: {
-          title: 'Digital Temperature Monitoring',
-          description: 'Automatically track and log temperatures in refrigerators, freezers and other cold storage units and receive real-time alerts if temperatures fall outside of predetermined thresholds.\n\nEnsure food safety compliance, prevent spoilage, and reduce waste with 24/7 cloud-based monitoring and automated compliance logs.'
+          title: 'IoT solutions available through MachineQ:',
+          description: '**Leak Detection**\nSafeguard convenience stores for water intrusion and receive real-time alerts if moisture is detected, enabling swift corrective action to help mitigate damage.\n\n**Digital Temperature Monitoring**\nAutomatically track and log temperatures in refrigerators, freezers and other cold storage units and receive real-time alerts if temperatures fall outside of predetermined thresholds.'
+        }
+      },
+      {
+        id: 'food-managed-wifi',
+        label: 'Managed WiFi',
+        x: 70,
+        y: 45,
+        icon: '/icons/Managed WiFi_Fill.png',
+        info: {
+          title: 'Advanced technology solutions available through Comcast Business:',
+          description: '**Managed WiFi**\nWireless internet access throughout a c-store to enable customers to connect to wifi while in the store.'
+        }
+      }
+    ]
+  },
+  {
+    id: 'kitchen',
+    name: 'Kitchen',
+    description: 'Commercial kitchen area with food preparation and storage',
+    image: '/Kitchen demo.jpg',
+    category: 'facility',
+    hotspots: [
+      {
+        id: 'kitchen-iot-monitoring',
+        label: 'IoT Monitoring',
+        x: 65,
+        y: 53,
+        icon: '/icons/MachineQ (IoT) Icon_Fill.png',
+        info: {
+          title: 'IoT solutions available through MachineQ:',
+          description: '**Leak Detection**\nSafeguard convenience stores for water intrusion and receive real-time alerts if moisture is detected, enabling swift corrective action to help mitigate damage.\n\n**Digital Temperature Monitoring**\nAutomatically track and log temperatures in refrigerators, freezers and other cold storage units and receive real-time alerts if temperatures fall outside of predetermined thresholds.'
         }
       }
     ]
   },
   {
     id: 'public-restroom',
-    name: 'Public Restroom',
+    name: 'Restroom',
     description: 'Modern restroom with smart fixtures and IoT monitoring',
     image: '/R7/R7/5-Restroom.jpg',
     category: 'facility',
     hotspots: [
       {
-        id: 'restroom-smart-restrooms',
-        label: 'Smart Restrooms',
-        x: 42,
+        id: 'restroom-iot',
+        label: 'IoT Solutions',
+        x: 50,
         y: 50,
-        icon: '/icons/Smart Solutions Icon.png',
+        icon: '/icons/MachineQ (IoT) Icon_Fill.png',
         info: {
-          title: 'Smart Restrooms',
-          description: 'Ensure clean, well-stocked and functioning restrooms with IoT-enabled monitoring.\n\nTrack cleanliness, supply levels, and occupancy in real-time. Receive maintenance alerts and optimize cleaning schedules to improve customer satisfaction.'
-        }
-      },
-      {
-        id: 'restroom-utility-monitoring',
-        label: 'Utility Monitoring',
-        x: 57,
-        y: 50,
-        icon: '/icons/Managed SD-WAN.png',
-        info: {
-          title: 'Utility Monitoring',
-          description: 'Uncover opportunities to reduce energy consumption and costs in the convenience store.\n\nTrack energy and water usage in real-time, identify inefficiencies, and access sustainability reporting to reduce costs and environmental impact.'
+          title: 'IoT solutions available through MachineQ:',
+          description: '**Smart Restrooms**\nEnsure clean, well-stocked and functioning restrooms.\n\n**Utility Monitoring**\nUncover opportunities to reduce energy consumption and costs in the store.'
         }
       }
     ]
@@ -117,23 +137,34 @@ export const rooms: Room[] = [
       {
         id: 'tech-connectivity',
         label: 'Managed Connectivity',
-        x: 42,
-        y: 50,
-        icon: '/icons/Managed Connectivity.png',
+        x: 17,
+        y: 63,
+        icon: '/icons/Managed Connectivity_Fill.png',
         info: {
-          title: 'Managed Connectivity',
-          description: 'Broadband solutions that offer nationwide internet connectivity with a variety of upload and download speeds to power your store locations.\n\nEnjoy business-grade service with speeds up to 1 Gbps, 99.9% uptime SLA, and professional support that scales with your growth.'
+          title: 'Advanced technology solutions available through Comcast Business:',
+          description: '**Managed Connectivity**\nBroadband solutions that offer nationwide internet connectivity with a variety of upload and download speeds to power your store locations.'
+        }
+      },
+      {
+        id: 'tech-sdwan',
+        label: 'Managed SD-WAN',
+        x: 39,
+        y: 46,
+        icon: '/icons/Managed SD-WAN_Fill.png',
+        info: {
+          title: 'Advanced technology solutions available through Comcast Business:',
+          description: '**Managed SD-WAN**\nHelp manage your store\'s network.'
         }
       },
       {
         id: 'tech-security',
         label: 'Managed Security',
-        x: 57,
-        y: 50,
-        icon: '/icons/Managed Security.png',
+        x: 70,
+        y: 45,
+        icon: '/icons/Managed Security_Fill.png',
         info: {
-          title: 'Managed Security',
-          description: 'Help protect your store from cyber attacks with enterprise-grade security solutions.\n\nAdvanced threat protection, firewall management, and 24/7 security monitoring with multi-layer intrusion prevention to ensure business continuity.'
+          title: 'Advanced technology solutions available through Comcast Business:',
+          description: '**Managed Security**\nHelp prevent your store from cyber attacks.'
         }
       }
     ]
@@ -146,25 +177,14 @@ export const rooms: Room[] = [
     category: 'facility',
     hotspots: [
       {
-        id: 'ev-chargers',
-        label: 'EV Charging Stations',
-        x: 42,
-        y: 55,
-        icon: '/icons/Smart Solutions Icon.png',
+        id: 'ev-charging-stations',
+        label: 'EV Charging',
+        x: 50,
+        y: 61,
+        icon: '/icons/MachineQ (IoT) Icon_Fill.png',
         info: {
-          title: 'EV Charging Stations',
-          description: 'Universally compatible turnkey electric vehicle (EV) charging stations with 3 different power output models and AI repair bot, giving businesses the flexibility and scalability to serve their customers with the convenience they need.\n\nAttract EV customers, create a new revenue stream, and future-proof your investment with Level 2 charging (7-19 kW) and AI-powered diagnostics.'
-        }
-      },
-      {
-        id: 'ev-lighting',
-        label: 'Security & Lighting',
-        x: 57,
-        y: 55,
-        icon: '/icons/Video Analytics & Presence Analytics.png',
-        info: {
-          title: 'Charging Area Security',
-          description: 'Well-lit and monitored charging area for customer safety and security.\n\nHD security cameras with night vision, motion-activated LED lighting, and 24/7 monitoring with cloud video retention provide customer safety, liability protection, and theft prevention.'
+          title: 'Smart technology solutions available through Comcast Smart Solutions:',
+          description: '**EV Charging**\nUniversally compatible turnkey electric vehicle (EV) charging stations with 3 different power output models and AI repair bot, giving businesses the flexibility and scalability to serve their customers with the convenience they need.'
         }
       }
     ]
@@ -177,25 +197,14 @@ export const rooms: Room[] = [
     category: 'retail',
     hotspots: [
       {
-        id: 'gas-payment',
-        label: 'Payment Systems',
-        x: 42,
-        y: 50,
-        icon: '/icons/Managed WiFi.png',
+        id: 'gas-iot',
+        label: 'Trash Fill Monitoring',
+        x: 30,
+        y: 82,
+        icon: '/icons/MachineQ (IoT) Icon_Fill.png',
         info: {
-          title: 'Digital Payment Processing',
-          description: 'Fast, secure payment processing at the pump with EMV and contactless support.\n\nPCI-DSS compliant with less than 2 second authorization, mobile wallet integration, and 99.9% uptime SLA for faster transactions and reduced fraud.'
-        }
-      },
-      {
-        id: 'gas-cameras',
-        label: 'Surveillance Cameras',
-        x: 57,
-        y: 50,
-        icon: '/icons/Managed Security.png',
-        info: {
-          title: 'Multi-Camera Security System',
-          description: 'Comprehensive video surveillance for safety, security, and drive-off prevention.\n\n1080p Full HD cameras with automatic license plate recognition, 60-day cloud retention, and POS system integration help prevent drive-offs and investigate incidents.'
+          title: 'IoT solutions available through MachineQ:',
+          description: '**Trash Fill Monitoring**\nRemotely monitor waste fill levels and receive automated alerts to streamline waste collection processes.'
         }
       }
     ]
