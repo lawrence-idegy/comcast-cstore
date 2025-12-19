@@ -69,15 +69,16 @@ const clickableRegions: ClickableRegion[] = [
     height: 20,
     roomId: 'food-area',
   },
-  {
-    id: 'region-kitchen',
-    name: 'Kitchen',
-    x: 70,
-    y: 12,
-    width: 20,
-    height: 28,
-    roomId: 'kitchen',
-  },
+  // Kitchen area hidden for now
+  // {
+  //   id: 'region-kitchen',
+  //   name: 'Kitchen',
+  //   x: 70,
+  //   y: 12,
+  //   width: 20,
+  //   height: 28,
+  //   roomId: 'kitchen',
+  // },
   {
     id: 'region-ev',
     name: 'EV Charging',

@@ -101,7 +101,7 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
           )}
 
 
-          {/* Hotspots - show all when no active hotspot, hide non-active until zoom completes */}
+          {/* Hotspots - hide non-active when a hotspot is selected */}
           {room.hotspots.map((hotspot) => {
             const isActive = hotspot.id === activeHotspotId;
             // Hide non-active hotspots while any hotspot is active (including during zoom-out)

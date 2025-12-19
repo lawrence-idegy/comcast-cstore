@@ -16,8 +16,8 @@ interface LocationNavBarProps {
 }
 
 export const LocationNavBar = ({ currentRoomId, onNavigate, isHidden = false, animateIn = false }: LocationNavBarProps) => {
-  // Filter out the overview from navigation (it's accessible via back button)
-  const locations = rooms.filter(room => room.id !== 'overview');
+  // Filter out the overview (accessible via back button) and kitchen (hidden for now)
+  const locations = rooms.filter(room => room.id !== 'overview' && room.id !== 'kitchen');
 
   // Animation state for initial rise from bottom
   const [hasAnimatedIn, setHasAnimatedIn] = useState(!animateIn);
