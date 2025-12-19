@@ -65,9 +65,18 @@ const clickableRegions: ClickableRegion[] = [
     name: 'Food Area',
     x: 65,
     y: 12,
-    width: 25,
+    width: 18,
     height: 28,
     roomId: 'food-area',
+  },
+  {
+    id: 'region-kitchen',
+    name: 'Kitchen',
+    x: 62,
+    y: 8,
+    width: 14,
+    height: 18,
+    roomId: 'kitchen',
   },
   {
     id: 'region-ev',
@@ -164,6 +173,7 @@ export const OverviewMap = ({ room, onNavigateToRoom }: OverviewMapProps) => {
           currentRoomId="overview"
           onNavigate={onNavigateToRoom}
           isHidden={isNavigating}
+          animateIn={true}
         />
       </div>
     </div>

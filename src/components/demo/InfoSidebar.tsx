@@ -7,6 +7,19 @@ import { X } from 'lucide-react';
 import { HotspotInfo } from '@/types/demo';
 import { cn } from '@/lib/utils';
 
+// Helper function to render text with bold markdown (**text**)
+const renderFormattedText = (text: string) => {
+  // Split by **text** pattern and render with bold
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      const boldText = part.slice(2, -2);
+      return <strong key={index} className="font-semibold">{boldText}</strong>;
+    }
+    return <span key={index}>{part}</span>;
+  });
+};
+
 interface InfoSidebarProps {
   info: HotspotInfo | null;
   isOpen: boolean;
@@ -60,7 +73,7 @@ export const InfoSidebar = ({ info, isOpen, onClose }: InfoSidebarProps) => {
                 className="text-white/90 text-[16px] font-normal leading-relaxed whitespace-pre-line"
                 style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
               >
-                {info.description}
+                {renderFormattedText(info.description)}
               </div>
             </div>
           )}

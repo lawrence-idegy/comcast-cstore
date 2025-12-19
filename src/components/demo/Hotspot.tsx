@@ -60,19 +60,6 @@ export const Hotspot = ({ id, label, x, y, icon, isActive, isSidebarOpen, onClic
         )}
       </button>
 
-      {/* Label tooltip on hover - hidden on mobile */}
-      <div
-        className={cn(
-          "absolute left-1/2 -translate-x-1/2 top-full mt-2.5 sm:mt-3.5",
-          "px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-lg",
-          "bg-white text-gray-900 text-xs sm:text-sm font-medium whitespace-nowrap",
-          "hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
-        )}
-        style={{ fontFamily: "'Comcast New Vision', sans-serif" }}
-      >
-        {label}
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-white" />
-      </div>
     </div>
   );
 };

@@ -8,9 +8,8 @@ import { useState, useRef } from 'react';
 import { Room, Hotspot as HotspotType } from '@/types/demo';
 import { Hotspot } from './Hotspot';
 import { InfoSidebar } from './InfoSidebar';
-import { NetworkMapModal } from './NetworkMapModal';
 import { LocationNavBar } from './LocationNavBar';
-import { ArrowLeft, Globe } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface RoomViewProps {
@@ -25,7 +24,6 @@ const DEBUG_COORDINATES = false;
 export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewProps) => {
   const [activeHotspotId, setActiveHotspotId] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isNetworkMapOpen, setIsNetworkMapOpen] = useState(false);
   const [currentZoomOrigin, setCurrentZoomOrigin] = useState<{ x: number; y: number } | null>(null);
   const [currentZoomScale, setCurrentZoomScale] = useState<number>(1.5);
   const [clickedCoords, setClickedCoords] = useState<{ x: number; y: number } | null>(null);
@@ -65,9 +63,6 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
     }, 1200);
   };
 
-  const handleCloseNetworkMap = () => {
-    setIsNetworkMapOpen(false);
-  };
 
   return (
     <>
@@ -148,21 +143,6 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
             </button>
           )}
 
-          {/* Network Map Button - Bottom Right, aligned with dock menu center */}
-          <button
-            onClick={() => setIsNetworkMapOpen(true)}
-            className={cn(
-              "absolute bottom-[calc(0.5rem+4rem+0.5rem)] sm:bottom-[calc(1rem+3rem+0.75rem)] right-2 sm:right-[12%] z-40 transition-all duration-300",
-              "control-button px-3 py-2.5 sm:px-5 sm:py-3.5 rounded-full flex items-center gap-1.5 sm:gap-2.5",
-              "hover:scale-105 active:scale-95",
-              isSidebarOpen ? "opacity-0 pointer-events-none" : "opacity-100"
-            )}
-          >
-            <Globe className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-            <span className="text-white text-sm sm:text-base font-medium hidden sm:inline" style={{ fontFamily: "'Comcast New Vision', sans-serif" }}>
-              Network Map
-            </span>
-          </button>
 
           {/* Location Navigation Bar */}
           {onNavigateToRoom && (
@@ -180,12 +160,6 @@ export const RoomView = ({ room, onBackToOverview, onNavigateToRoom }: RoomViewP
         info={activeHotspot?.info || null}
         isOpen={isSidebarOpen}
         onClose={handleCloseSidebar}
-      />
-
-      {/* Network Map Modal */}
-      <NetworkMapModal
-        isOpen={isNetworkMapOpen}
-        onClose={handleCloseNetworkMap}
       />
     </>
   );
